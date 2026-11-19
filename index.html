@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    
+<div class="app">
+
+  <!-- CABECERA -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">⚡</span>
+      <div>
+        <h1>MATH <span>BATTLE</span></h1>
+        <small>PLATAFORMA ACADÉMICA</small>
+      </div>
+    </div>
+    <div class="online"><i></i> EN LÍNEA</div>
+  </header>
+
+  <!-- INICIO DE SESIÓN -->
+  <section id="login" class="login-screen">
+    <div class="login-card">
+      <div class="login-symbol">∑</div>
+      <p class="eyebrow">BIENVENIDO A MATH BATTLE</p>
+      <h2>Acceso de estudiantes</h2>
+      <p class="muted">Ingresa tu código para continuar.</p>
+
+      <label for="studentCode">Código de estudiante</label>
+      <input id="studentCode" type="text" placeholder="Ej. MB2026">
+      <button id="loginBtn" class="primary-btn">🚀 Ingresar</button>
+      <p id="loginMessage" class="message"></p>
+    </div>
+  </section>
+
+  <!-- PANEL PRINCIPAL -->
+  <main id="dashboard" class="hidden">
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">ÁREA DEL ESTUDIANTE</p>
+        <h2>¡Hola, <span id="studentName">Estudiante</span>! 👋</h2>
+        <p class="muted">¿Listo para poner a prueba tus conocimientos?</p>
+      </div>
+      <div class="student-badge">🎓 4.º SECUNDARIA</div>
+    </section>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navigation">
+      <button class="nav-btn active" data-view="home">🏠 Inicio</button>
+      <button class="nav-btn" data-view="games">🎮 Minijuegos</button>
+      <button class="nav-btn" data-view="exam">📝 Examen</button>
+      <button class="nav-btn" data-view="profile">👤 Mi perfil</button>
+    </nav>
+
+    <!-- INICIO -->
+    <section id="view-home" class="view">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TU ESPACIO DE APRENDIZAJE</p>
+          <h2>Panel principal 🚀</h2>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span>🎮</span>
+          <p>Minijuegos</p>
+          <strong>05</strong>
+        </article>
+        <article class="stat-card">
+          <span>📝</span>
+          <p>Examen final</p>
+          <strong>10 preguntas</strong>
+        </article>
+        <article class="stat-card">
+          <span>🏆</span>
+          <p>Clasificación</p>
+          <strong>TOP 50</strong>
+        </article>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PRACTICA Y APRENDE</p>
+          <h2>🎮 Minijuegos</h2>
+        </div>
+        <button class="text-btn" data-go="games">Ver todos →</button>
+      </div>
+
+      <div class="games-grid">
+
+        <button class="game-card" data-topic="lineales">
+          <span class="game-icon">📐</span>
+          <span class="game-title">Desigualdades lineales</span>
+          <span class="game-description">Practica y resuelve</span>
+          <span class="game-arrow">→</span>
+        </button>
+
+        <button class="game-card" data-topic="cuadraticas">
+          <span class="game-icon">📊</span>
+          <span class="game-title">Desigualdades cuadráticas</span>
+          <span class="game-description">Domina las funciones</span>
+          <span class="game-arrow">→</span>
+        </button>
+
+        <button class="game-card" data-topic="racionales">
+          <span class="game-icon">➗</span>
+          <span class="game-title">Desigualdades racionales</span>
+          <span class="game-description">Analiza los intervalos</span>
+          <span class="game-arrow">→</span>
+        </button>
+
+        <button class="game-card" data-topic="logaritmos">
+          <span class="game-icon">🔢</span>
+          <span class="game-title">Logaritmos</span>
+          <span class="game-description">Resuelve los desafíos</span>
+          <span class="game-arrow">→</span>
+        </button>
+
+        <button class="game-card mixed-card" data-topic="mixto">
+          <span class="game-icon">🔥</span>
+          <span class="game-title">Desafío mixto</span>
+          <span class="game-description">Todos los temas juntos</span>
+          <span class="game-arrow">→</span>
+        </button>
+
+      </div>
+
+      <div class="exam-banner">
+        <div>
+          <p class="eyebrow">PON A PRUEBA TODO LO APRENDIDO</p>
+          <h2>📝 Examen final</h2>
+          <p>10 preguntas · 30 minutos · 45 puntos</p>
+        </div>
+        <button id="goExamBtn" class="primary-btn">Comenzar examen →</button>
+      </div>
+
+    </section>
+
+    <!-- MINIJUEGOS -->
+    <section id="view-games" class="view hidden">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ENTRENAMIENTO</p>
+          <h2>🎮 Selecciona un minijuego</h2>
+        </div>
+      </div>
+      <div id="gamesList" class="games-grid"></div>
+    </section>
+
+    <!-- ÁREA DE PREGUNTAS -->
+    <section id="view-quiz" class="view hidden">
+      <button class="back-btn" data-go="home">← Volver</button>
+      <div class="quiz-card">
+        <p id="quizTopic" class="eyebrow">MINIJUEGO</p>
+        <div class="quiz-progress">
+          <span id="quizCounter">Pregunta 1</span>
+          <span id="quizScore">Puntos: 0</span>
+        </div>
+        <div class="progress-track">
+          <div id="quizProgressBar"></div>
+        </div>
+        <h2 id="questionText">Cargando pregunta...</h2>
+        <div id="answerOptions" class="answers-grid"></div>
+        <p id="answerFeedback" class="message"></p>
+        <button id="nextQuestionBtn" class="primary-btn hidden">
+          Siguiente pregunta →
+        </button>
+      </div>
+    </section>
+
+    <!-- EXAMEN -->
+    <section id="view-exam" class="view hidden">
+      <button class="back-btn" data-go="home">← Volver</button>
+      <div class="exam-card">
+        <p class="eyebrow">EVALUACIÓN OFICIAL</p>
+        <h2>📝 Examen final</h2>
+        <p class="muted">Demuestra lo que sabes.</p>
+
+        <div class="exam-info">
+          <div>📚 <strong>10 preguntas</strong></div>
+          <div>⏱️ <strong>30 minutos</strong></div>
+          <div>🏆 <strong>45 puntos</strong></div>
+        </div>
+
+        <p id="examMessage" class="message"></p>
+        <button id="startExamBtn" class="primary-btn">
+          🚀 Iniciar examen
+        </button>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS DEL EXAMEN -->
+    <section id="view-exam-questions" class="view hidden">
+      <div class="exam-top">
+        <span>📝 EXAMEN FINAL</span>
+        <span id="examTimer">⏱️ 30:00</span>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-progress">
+          <span id="examCounter">Pregunta 1 de 10</span>
+          <span id="examAnswered">Respondidas: 0/10</span>
+        </div>
+        <div class="progress-track">
+          <div id="examProgressBar"></div>
+        </div>
+        <h2 id="examQuestionText">Cargando pregunta...</h2>
+        <div id="examAnswerOptions" class="answers-grid"></div>
+        <div class="exam-controls">
+          <button id="previousExamBtn" class="secondary-btn">← Anterior</button>
+          <button id="nextExamBtn" class="primary-btn">Siguiente →</button>
+        </div>
+        <button id="submitExamBtn" class="submit-btn">
+          🏁 Entregar examen
+        </button>
+        <p id="examQuestionMessage" class="message"></p>
+      </div>
+    </section>
+
+    <!-- RESULTADO -->
+    <section id="view-result" class="view hidden">
+      <div class="result-card">
+        <div class="result-icon">🏆</div>
+        <p class="eyebrow">EVALUACIÓN COMPLETADA</p>
+        <h2>Tu resultado</h2>
+        <strong id="finalGrade" class="final-grade">--/45</strong>
+        <p id="finalMessage" class="muted"></p>
+        <button class="primary-btn" data-go="home">Volver al inicio</button>
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="view-profile" class="view hidden">
+      <div class="section-heading">
+        <h2>👤 Mi perfil</h2>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🎓</div>
+        <h2 id="profileName">Estudiante</h2>
+        <p id="profileCode" class="muted">Código de estudiante</p>
+        <div id="profileResult">Consulta tu resultado del examen final.</div>
+      </div>
+    </section>
+
+    <!-- RANKING GLOBAL -->
+    <section id="ranking" class="ranking-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">COMPETENCIA GENERAL</p>
+          <h2>🏆 Ranking de estudiantes</h2>
+          <p class="muted">Los 50 mejores resultados del examen final.</p>
+        </div>
+        <button id="refreshRankingBtn" class="secondary-btn">↻ Actualizar</button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Posición</th>
+              <th>Estudiante</th>
+              <th>Nota</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="rankingBody">
+            <tr>
+              <td colspan="4">⏳ Cargando clasificación...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>⚡ MATH BATTLE</span>
+      <span>Plataforma de matemáticas · 4.º de secundaria</span>
+    </footer>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="/script.js"></script>
+  </body>
+
+</html>
